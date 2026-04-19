@@ -206,32 +206,18 @@ textarea {
   display: flex;
   justify-content: space-between;
   gap: var(--space-5);
-  align-items: flex-start;
-  padding: var(--space-6) var(--space-7) var(--space-5);
+  align-items: center;
+  padding: var(--space-5) var(--space-7);
   border-bottom: 1px solid var(--color-border-subtle);
   background: rgba(11, 17, 27, 0.82);
   backdrop-filter: blur(8px);
 }
 
-.header-kicker {
-  margin: 0 0 var(--space-2);
-  font-size: 0.74rem;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-}
-
 .conversation-header h1 {
   margin: 0;
   font-family: var(--font-heading);
-  font-size: clamp(1.35rem, 2vw, 1.86rem);
-  letter-spacing: -0.01em;
-}
-
-.header-subtitle {
-  margin: var(--space-2) 0 0;
-  color: var(--color-text-secondary);
-  max-width: 620px;
+  font-size: clamp(1.3rem, 1.8vw, 1.7rem);
+  letter-spacing: -0.005em;
 }
 
 .header-meta {
@@ -264,73 +250,17 @@ textarea {
   color: var(--color-text-muted);
 }
 
-.quick-actions {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-3);
-  padding: var(--space-5) var(--space-7) 0;
-}
-
-.quick-action {
-  min-height: 58px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border-subtle);
-  background: var(--color-bg-surface);
-  color: var(--color-text-secondary);
-  text-align: left;
-  padding: var(--space-3) var(--space-4);
-  cursor: pointer;
-  transition: all 0.18s ease;
-}
-
-.quick-action:hover:not(:disabled) {
-  border-color: var(--color-border-strong);
-  color: var(--color-text-primary);
-  transform: translateY(-1px);
-}
-
-.quick-action:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-}
-
 .conversation-stream {
   flex: 1;
   overflow: auto;
-  padding: var(--space-6) var(--space-7);
+  padding: var(--space-5) var(--space-7);
 }
 
 .stream-inner {
-  width: min(920px, 100%);
+  width: min(860px, 100%);
   margin: 0 auto;
   display: grid;
   gap: var(--space-4);
-}
-
-.empty-state {
-  border: 1px dashed var(--color-border-strong);
-  background: rgba(20, 28, 42, 0.48);
-  border-radius: var(--radius-lg);
-  padding: var(--space-6);
-}
-
-.empty-state h2 {
-  margin: 0 0 var(--space-2);
-  font-size: 1.04rem;
-  font-family: var(--font-heading);
-}
-
-.empty-state p {
-  margin: 0;
-  color: var(--color-text-secondary);
-}
-
-.empty-state ul {
-  margin: var(--space-4) 0 0;
-  padding-left: var(--space-5);
-  color: var(--color-text-secondary);
-  display: grid;
-  gap: var(--space-2);
 }
 
 .message-item {
@@ -437,7 +367,7 @@ textarea {
 }
 
 .feedback-banner {
-  width: min(920px, calc(100% - var(--space-7) * 2));
+  width: min(860px, calc(100% - var(--space-7) * 2));
   margin: 0 auto var(--space-4);
   border-radius: var(--radius-md);
   border: 1px solid rgba(255, 127, 157, 0.45);
@@ -448,7 +378,7 @@ textarea {
 }
 
 .composer {
-  width: min(920px, calc(100% - var(--space-7) * 2));
+  width: min(860px, calc(100% - var(--space-7) * 2));
   margin: 0 auto;
   background: var(--color-bg-surface-alt);
   border: 1px solid var(--color-border-subtle);
@@ -518,13 +448,6 @@ textarea {
   cursor: not-allowed;
 }
 
-.disclaimer {
-  width: min(920px, calc(100% - var(--space-7) * 2));
-  margin: var(--space-3) auto var(--space-5);
-  color: var(--color-text-muted);
-  font-size: 0.76rem;
-}
-
 @keyframes pulse {
   0%,
   100% {
@@ -543,14 +466,12 @@ textarea {
   }
 
   .conversation-header,
-  .quick-actions,
   .conversation-stream {
     padding-inline: var(--space-5);
   }
 
   .composer,
-  .feedback-banner,
-  .disclaimer {
+  .feedback-banner {
     width: min(920px, calc(100% - var(--space-5) * 2));
   }
 }
@@ -577,23 +498,18 @@ textarea {
 
   .conversation-header {
     flex-direction: column;
-  }
-
-  .quick-actions {
-    grid-template-columns: 1fr;
+    align-items: flex-start;
   }
 }
 
 @media (max-width: 560px) {
   .conversation-header,
-  .quick-actions,
   .conversation-stream {
     padding-inline: var(--space-4);
   }
 
   .composer,
-  .feedback-banner,
-  .disclaimer {
+  .feedback-banner {
     width: calc(100% - var(--space-4) * 2);
   }
 

@@ -3,11 +3,11 @@ function Sidebar() {
     <aside className="product-sidebar">
       <header className="sidebar-brand">
         <span className="brand-mark" aria-hidden="true">
-          A
+          S
         </span>
         <div>
-          <strong>Auralis Console</strong>
-          <p>Intelligent Conversation Platform</p>
+          <strong>Satoshi</strong>
+          <p>Conversational Workspace</p>
         </div>
       </header>
 
@@ -38,8 +38,8 @@ function Sidebar() {
       </section>
 
       <footer className="sidebar-footer">
-        <p>API resiliente com Responses API</p>
-        <p>Experiencia otimizada para produtividade</p>
+        <p>OpenAI Responses API</p>
+        <p>Node + React</p>
       </footer>
     </aside>
   );

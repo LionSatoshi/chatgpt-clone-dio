@@ -1,4 +1,4 @@
-# Auralis Console
+# Satoshi
 
 Uma aplicacao full stack de conversacao inteligente com frontend em React e backend em Node.js.
 

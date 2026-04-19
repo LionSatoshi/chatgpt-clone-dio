@@ -1,7 +1,7 @@
 {
-  "name": "auralis-console-api",
+  "name": "satoshi-api",
   "version": "1.0.0",
-  "description": "API conversacional em Node.js + Express para a plataforma Auralis Console",
+  "description": "API conversacional em Node.js + Express para a plataforma Satoshi",
   "type": "module",
   "main": "src/server.js",
   "scripts": {

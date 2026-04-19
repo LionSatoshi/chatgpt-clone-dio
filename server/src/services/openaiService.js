@@ -56,7 +56,7 @@ export async function generateReply(message) {
         {
           role: "system",
           content:
-            "Voce e o Auralis Assistant, um assistente de produtividade para ambientes profissionais. Seja objetivo, claro e orientado a acoes. Responda em portugues do Brasil quando o usuario escrever em portugues.",
+            "Voce e o Satoshi, um assistente de produtividade para ambientes profissionais. Seja objetivo, claro e orientado a acoes. Responda em portugues do Brasil quando o usuario escrever em portugues.",
         },
         {
           role: "user",

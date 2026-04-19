@@ -9,8 +9,8 @@ function formatTime(timestamp) {
 
 function ChatMessage({ role, content, createdAt }) {
   const isUser = role === "user";
-  const author = isUser ? "Voce" : "Auralis Assistant";
-  const avatarLabel = isUser ? "VC" : "AR";
+  const author = isUser ? "Voce" : "Satoshi";
+  const avatarLabel = isUser ? "VC" : "ST";
   const sentAt = formatTime(createdAt);
 
   return (
