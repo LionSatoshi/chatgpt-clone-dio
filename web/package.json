@@ -1,5 +1,5 @@
 {
-  "name": "chatgpt-clone-dio-web",
+  "name": "auralis-console-web",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -17,4 +17,3 @@
     "vite": "^5.4.0"
   }
 }
-

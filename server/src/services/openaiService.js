@@ -38,7 +38,7 @@ function getOpenAIClient() {
   if (!apiKey) {
     throw createServiceError(
       500,
-      "Chave da OpenAI nao configurada no servidor (.env)."
+      "Configuracao ausente: defina OPENAI_API_KEY no arquivo .env."
     );
   }
 
@@ -56,7 +56,7 @@ export async function generateReply(message) {
         {
           role: "system",
           content:
-            "Voce e um assistente util, didatico e objetivo. Responda em portugues do Brasil quando o usuario escrever em portugues.",
+            "Voce e o Auralis Assistant, um assistente de produtividade para ambientes profissionais. Seja objetivo, claro e orientado a acoes. Responda em portugues do Brasil quando o usuario escrever em portugues.",
         },
         {
           role: "user",
@@ -70,7 +70,7 @@ export async function generateReply(message) {
     if (!reply) {
       throw createServiceError(
         502,
-        "A OpenAI nao retornou um texto valido. Tente novamente."
+        "O provedor de IA retornou uma resposta vazia. Tente novamente."
       );
     }
 
@@ -79,7 +79,7 @@ export async function generateReply(message) {
     if (error?.status === 401 || error?.status === 403) {
       throw createServiceError(
         502,
-        "Falha de autenticacao com a OpenAI. Verifique sua chave de API.",
+        "Falha de autenticacao com o provedor de IA. Revise a chave de API.",
         error
       );
     }
@@ -87,7 +87,7 @@ export async function generateReply(message) {
     if (error?.status === 429) {
       throw createServiceError(
         429,
-        "Limite de requisicoes atingido na OpenAI. Aguarde e tente de novo.",
+        "Limite de requisicoes atingido no provedor de IA. Tente novamente em instantes.",
         error
       );
     }
@@ -95,7 +95,7 @@ export async function generateReply(message) {
     if (error?.status >= 500) {
       throw createServiceError(
         502,
-        "Servico da OpenAI indisponivel no momento. Tente novamente.",
+        "Servico de IA indisponivel no momento. Tente novamente em alguns instantes.",
         error
       );
     }
@@ -106,9 +106,8 @@ export async function generateReply(message) {
 
     throw createServiceError(
       500,
-      "Nao foi possivel gerar resposta agora. Tente novamente.",
+      "Nao foi possivel gerar resposta neste momento.",
       error
     );
   }
 }
-

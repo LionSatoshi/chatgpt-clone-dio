@@ -1,51 +1,37 @@
-# chatgpt-clone-dio
+# Auralis Console
 
-Aplicacao full stack para o desafio da DIO **"Integrando ChatGPT com Node e React"**.
+Plataforma full stack de conversacao inteligente para fluxos profissionais.
 
-O projeto simula uma interface estilo ChatGPT com:
-- frontend em React + Vite
-- backend em Node.js + Express
-- integracao com OpenAI no backend usando SDK oficial e Responses API
+O produto combina uma interface premium em React com uma API em Node.js para orquestrar interacoes com modelos de linguagem de forma segura, escalavel e orientada a produtividade.
 
-A chave da OpenAI fica protegida no servidor via variavel de ambiente.
+## Visao geral
 
-## Descricao do desafio
+**Auralis Console** foi projetado para equipes que precisam transformar perguntas complexas em respostas acionaveis com rapidez e consistencia.
 
-Construir uma aplicacao de chat moderna e responsiva, com separacao clara de responsabilidades entre frontend e backend, incluindo consumo de IA de forma segura para publicacao em portfolio e GitHub.
+Principais objetivos:
+- reduzir friccao na comunicacao entre usuario e assistente de IA
+- elevar a clareza visual com uma experiencia SaaS de alto padrao
+- manter arquitetura limpa e pronta para evolucao
 
-## Arquitetura do projeto
+## Arquitetura
 
-```txt
-chatgpt-clone-dio/
-  server/                       # API Node.js
-    src/
-      app.js                    # Configuracao do Express (middlewares e rotas)
-      server.js                 # Bootstrap do servidor
-      routes/chatRoutes.js      # Rota POST /chat
-      controllers/chatController.js
-      services/openaiService.js # Integracao com OpenAI (Responses API)
-    .env.example
-    package.json
+O projeto utiliza separacao clara entre frontend e backend:
 
-  web/                          # Aplicacao React
-    src/
-      pages/ChatPage.jsx
-      components/
-        Sidebar.jsx
-        ChatWindow.jsx
-        ChatMessage.jsx
-        ChatInput.jsx
-      services/api.js           # Cliente HTTP do frontend
-      styles/global.css
-      App.jsx
-      main.jsx
-    .env.example
-    package.json
-    vite.config.js
-    index.html
-```
+- `web`: aplicacao React (Vite), responsavel pela experiencia conversacional
+- `server`: API Express, responsavel por validacao, integracao OpenAI e tratamento de erros
 
-## Tecnologias utilizadas
+Fluxo:
+1. O frontend envia uma solicitacao para `POST /chat`.
+2. O backend valida payload e executa chamada via OpenAI SDK (Responses API).
+3. A API retorna um objeto padrao com a resposta textual.
+4. O frontend renderiza mensagens, estados de loading e feedback de erro.
+
+## Stack
+
+### Frontend
+- React 18
+- Vite 5
+- CSS com design tokens semanticos
 
 ### Backend
 - Node.js
@@ -55,24 +41,48 @@ chatgpt-clone-dio/
 - openai (SDK oficial)
 - nodemon
 
-### Frontend
-- React
-- Vite
-- CSS (tema escuro, responsivo)
+## Estrutura do projeto
 
-## Fluxo da aplicacao
-
-1. Usuario envia mensagem no frontend.
-2. Frontend faz `POST /chat` para o backend.
-3. Backend valida o payload e chama `client.responses.create(...)`.
-4. Backend retorna `{ "reply": "..." }`.
-5. Frontend renderiza a resposta da IA.
+```txt
+auralis-console/
+  server/
+    src/
+      app.js
+      server.js
+      routes/
+        chatRoutes.js
+      controllers/
+        chatController.js
+      services/
+        openaiService.js
+    .env.example
+    package.json
+  web/
+    src/
+      components/
+        ChatInput.jsx
+        ChatMessage.jsx
+        ChatWindow.jsx
+        Sidebar.jsx
+      pages/
+        ChatPage.jsx
+      services/
+        api.js
+      styles/
+        global.css
+      App.jsx
+      main.jsx
+    .env.example
+    index.html
+    package.json
+    vite.config.js
+  .gitignore
+  README.md
+```
 
 ## Variaveis de ambiente
 
 ### Backend (`server/.env`)
-
-Use `server/.env.example`:
 
 ```env
 PORT=3333
@@ -83,22 +93,13 @@ OPENAI_MODEL=gpt-4.1-mini
 
 ### Frontend (`web/.env`)
 
-Use `web/.env.example`:
-
 ```env
 VITE_API_URL=http://localhost:3333
 ```
 
-## Como executar localmente
+## Execucao local
 
-### 1) Clonar o repositorio
-
-```bash
-git clone https://github.com/SEU_USUARIO/chatgpt-clone-dio.git
-cd chatgpt-clone-dio
-```
-
-### 2) Configurar backend
+### 1. Instalar backend
 
 ```bash
 cd server
@@ -107,17 +108,17 @@ npm install
 npm run dev
 ```
 
-No Windows PowerShell, para copiar o `.env`:
+PowerShell:
 
 ```powershell
 Copy-Item .env.example .env
 ```
 
-Backend disponivel em: `http://localhost:3333`
+API disponivel em `http://localhost:3333`.
 
-### 3) Configurar frontend
+### 2. Instalar frontend
 
-Em outro terminal:
+Em um novo terminal:
 
 ```bash
 cd web
@@ -126,79 +127,65 @@ npm install
 npm run dev
 ```
 
-No Windows PowerShell:
+PowerShell:
 
 ```powershell
 Copy-Item .env.example .env
 ```
 
-Frontend disponivel em: `http://localhost:5173`
+Aplicacao web disponivel em `http://localhost:5173`.
 
-## Endpoint principal
+## Endpoints
 
 ### `POST /chat`
 
-Request:
+Request body:
 
 ```json
 {
-  "message": "Explique React em 3 linhas"
+  "message": "Crie um resumo executivo desta proposta"
 }
 ```
 
-Response (`200`):
+Success (`200`):
 
 ```json
 {
-  "reply": "React e uma biblioteca JavaScript para construir interfaces..."
+  "reply": "Aqui esta um resumo executivo..."
 }
 ```
 
-Erros esperados:
-- `400` mensagem invalida
-- `429` limite de requisicoes na OpenAI
-- `500`/`502` erro interno/externo
+Erros comuns:
+- `400`: payload invalido
+- `429`: limite de requisicoes no provedor de IA
+- `500`/`502`: indisponibilidade temporaria
 
-## Demonstracao
+## Diferenciais da interface
 
-Adicione aqui os prints/GIFs do projeto rodando:
+- design system com tokens semanticos (cores, espacos, radius e sombras)
+- hierarquia visual orientada a leitura e decisao
+- componente de composicao de mensagem com estados refinados
+- loading discreto e feedback de erro contextual
+- layout responsivo com acabamento consistente em desktop e mobile
 
-- `docs/images/chat-desktop.png`
-- `docs/images/chat-mobile.png`
-- `docs/images/chat-loading.png`
+## Roadmap
 
-Exemplo de markdown para screenshot:
-
-```md
-![Tela principal](docs/images/chat-desktop.png)
-```
-
-## Aprendizados
-
-- Estruturacao de API Express em camadas (`routes`, `controllers`, `services`)
-- Boas praticas de seguranca para uso de API key no backend
-- Integracao com OpenAI usando Responses API
-- Organizacao de componentes React para reuso
-- Tratamento de loading, erro e responsividade em UI de chat
-
-## Melhorias futuras
-
-- Historico de conversas persistido em banco de dados
-- Streaming de respostas da OpenAI em tempo real
-- Autenticacao e controle por usuario
-- Testes automatizados (unitarios e integracao)
-- Docker e pipeline CI/CD
-- Deploy (backend + frontend)
+- streaming de resposta em tempo real
+- persistencia de historico por workspace
+- autenticacao e controle de acesso
+- observabilidade (logs estruturados e metricas)
+- testes automatizados de interface e API
+- pipeline CI/CD e deploy multiambiente
 
 ## Publicacao no GitHub
 
-Na raiz do projeto:
+Na raiz do repositorio:
 
 ```bash
 git init
 git add .
-git commit -m "feat: final version for dio challenge"
+git commit -m "feat: initial release of auralis console"
 git branch -M main
-git remote add origin https://github.com/SEU_USUARIO/chatgpt-clone-dio.git
+git remote add origin https://github.com/SEU_USUARIO/auralis-console.git
 git push -u origin main
 ```

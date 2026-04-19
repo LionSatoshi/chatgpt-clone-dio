@@ -1,7 +1,7 @@
 {
-  "name": "chatgpt-clone-dio-server",
+  "name": "auralis-console-api",
   "version": "1.0.0",
-  "description": "Backend Node.js + Express para o desafio Integrando ChatGPT com Node e React",
+  "description": "API conversacional em Node.js + Express para a plataforma Auralis Console",
   "type": "module",
   "main": "src/server.js",
   "scripts": {

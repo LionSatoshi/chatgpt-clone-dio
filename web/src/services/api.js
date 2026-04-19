@@ -18,14 +18,13 @@ export async function postChatMessage(message) {
 
   if (!response.ok) {
     const errorMessage =
-      data?.error || "Falha ao gerar resposta. Verifique o backend.";
+      data?.error || "Nao foi possivel concluir a solicitacao no momento.";
     throw new Error(errorMessage);
   }
 
   if (!data?.reply) {
-    throw new Error("Resposta invalida do servidor.");
+    throw new Error("Servico indisponivel temporariamente.");
   }
 
   return data.reply;
 }
-

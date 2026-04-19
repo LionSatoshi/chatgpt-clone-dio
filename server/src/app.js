@@ -23,7 +23,7 @@ app.use(chatRoutes);
 app.use((err, _req, res, _next) => {
   const statusCode = err.statusCode || 500;
   const publicMessage =
-    err.publicMessage || "Erro interno. Tente novamente em instantes.";
+    err.publicMessage || "Nao foi possivel processar sua solicitacao agora.";
 
   if (statusCode >= 500) {
     // Loga detalhes internos sem expor ao cliente.
@@ -34,4 +34,3 @@ app.use((err, _req, res, _next) => {
 });
 
 export default app;
-

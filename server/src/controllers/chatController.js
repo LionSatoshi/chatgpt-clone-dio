@@ -5,7 +5,7 @@ export async function postChat(req, res, next) {
 
   if (typeof message !== "string" || !message.trim()) {
     return res.status(400).json({
-      error: "Envie uma mensagem valida no campo 'message'.",
+      error: "Informe uma mensagem valida no campo 'message'.",
     });
   }
 
@@ -16,4 +16,3 @@ export async function postChat(req, res, next) {
     return next(error);
   }
 }
-
